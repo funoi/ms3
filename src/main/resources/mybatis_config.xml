@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 使用Mybaits的日志控制 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+
+
+	<environments default="default"> <!-- 定义所有的数据库链接,并指定使用哪一个数据源 -->
+		<environment id="default"><!-- 定义数据源名称 -->
+			<transactionManager type="JDBC" /><!-- 事务的提交类型 -->
+			<dataSource type="POOLED"> <!-- 定义一个数据源 ,连接方式为数据库连接池方式 -->
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test" />
+				<property name="username" value="root" />
+				<property name="password" value="123" />
+			</dataSource>
+		</environment>
+	</environments>
+
+
+	<!-- 加载数据库链接的时候,加载的sql映射 -->
+	<mappers>
+		<!-- 使用接口方式的MyBatis编程 -->
+		<package name="com.dao" /><!-- 注意此处的.的书写方式 -->
+	</mappers>
+</configuration>
